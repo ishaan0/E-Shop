@@ -1,0 +1,23 @@
+<div class="container">
+  <ng-container *ngFor="let product of products; let i = index">
+    <div
+      class="row shadow-sm m-3 p-3 border rounded d-flex align-item-center text-center bg-secondary"
+      style="--bs-bg-opacity: 0.2; --bs-border-opacity: 0.2"
+    >
+      <div class="col-2">{{ product.title }}</div>
+      <div class="col-3">{{ product.description }}</div>
+      <div class="col-2">{{ product.price }}</div>
+      <div class="col-3">
+        <img
+          [src]="product.imagePath"
+          alt="product image"
+          class="img-fluid"
+          style="max-height: 50px"
+        />
+      </div>
+      <div class="col-2">
+        <button class="btn btn-danger" (click)="onDelete(i)">Delete</button>
+      </div>
+    </div>
+  </ng-container>
+</div>
