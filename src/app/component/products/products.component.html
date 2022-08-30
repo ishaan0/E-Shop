@@ -1,36 +1,15 @@
-<!-- <div class="container">
-  <div class="row">
-    <ng-container *ngFor="let product of products; let i = index">
-      <div class="col-md-3">
-        <img
-          [src]="product.imagePath"
-          alt="product image"
-          class="img-responsive"
-        />
-        <div class="container">
-          <h3>
-            <strong>{{ product.title }}</strong>
-          </h3>
-          <p>{{ product.description }}</p>
-          <p><strong>PRICE:</strong> {{ product.price }}</p>
-          <button
-            type="button"
-            class="btn btn-primary"
-            (click)="onAddToCart(i)"
-          >
-            Add to cart
-          </button>
-        </div>
-      </div>
-    </ng-container>
-  </div>
-</div> -->
-
 <div class="container">
   <div class="d-flex flex-row flex-wrap">
     <ng-container *ngFor="let product of products; let i = index">
-      <div style="width: 250px;" class="m-2 mt-4 p-3 text-center border rounded-4">
-        <img [src]="product.imagePath" alt="product image" class="img-fluid h-50" />
+      <div
+        style="width: 250px"
+        class="m-2 mt-4 p-3 text-center border rounded-4"
+      >
+        <img
+          [src]="product.imagePath"
+          alt="product image"
+          class="img-fluid h-50"
+        />
         <h2>{{ product.title }}</h2>
         <p>{{ product.description }}</p>
         <p><strong>PRICE:</strong> {{ product.price }}</p>
