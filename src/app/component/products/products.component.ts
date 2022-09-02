@@ -1,22 +1,34 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
 import { CartService } from 'src/app/service/cart.service';
-import { ProductService } from 'src/app/service/product.service';
 import { Product } from './product.model';
+import * as fromApp from '../../app.reducer'
+import * as CartActions from "../cart/store/cart.actions";
+
 
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
-  styleUrls: ['./products.component.css']
+  styleUrls: ['./products.component.css'],
 })
 export class ProductsComponent implements OnInit {
-  products: Product[] ;
-  constructor(private productService: ProductService,private cartService: CartService) { }
+  // products: Product[];
+  products: Observable<{products: Product[]}> ;
+  constructor(
+    private cartService: CartService,
+    // private store: Store<{product: {products: Product[]}}>
+    private store: Store<fromApp.AppState>
+  ) {}
+
 
   ngOnInit(): void {
-    this.products = this.productService.getProducts() ;
+    this.products = this.store.select('product') ;
   }
 
-  onAddToCart(index: number){
-    this.cartService.addProduct(this.products[index]) ;
+  onAddToCart(product: Product) {
+    // this.cartService.addProduct(this.products[index]);
+    // (this.products | async).products
+    this.store.dispatch(new CartActions.AddCartProduct(product)) ;
   }
 }

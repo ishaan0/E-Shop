@@ -1,5 +1,5 @@
 <div class="container">
-  <ng-container *ngFor="let product of products; let i = index">
+  <ng-container *ngFor="let product of (products | async).products let i = index">
     <div
       class="row shadow-sm m-3 p-3 border rounded d-flex align-item-center text-center bg-secondary"
       style="--bs-bg-opacity: 0.2; --bs-border-opacity: 0.2"

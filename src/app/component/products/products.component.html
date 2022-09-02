@@ -1,6 +1,6 @@
 <div class="container">
   <div class="d-flex flex-row flex-wrap">
-    <ng-container *ngFor="let product of products; let i = index">
+    <ng-container *ngFor="let product of (products | async).products; let i = index">
       <div
         style="width: 250px"
         class="m-2 mt-4 p-3 text-center border rounded-4"
@@ -13,7 +13,7 @@
         <h2>{{ product.title }}</h2>
         <p>{{ product.description }}</p>
         <p><strong>PRICE:</strong> {{ product.price }}</p>
-        <button type="button" class="btn btn-primary" (click)="onAddToCart(i)">
+        <button type="button" class="btn btn-primary" (click)="onAddToCart(product)">
           Add to cart
         </button>
       </div>
