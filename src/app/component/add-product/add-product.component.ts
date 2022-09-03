@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { Product } from '../products/product.model';
 import * as productAction from 'src/app/component/products/store/product.actions' ;
 import * as fromApp from '../../app.reducer'
 
@@ -36,8 +35,6 @@ export class AddProductComponent implements OnInit {
   }
 
   onSubmit() {
-    // this.productService.addProduct(this.addProductForm.value);
-
     this.store.dispatch(new productAction.AddProduct(this.addProductForm.value))
     this.onReset();
   }

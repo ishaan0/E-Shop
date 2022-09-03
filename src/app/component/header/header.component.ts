@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from 'src/app/service/auth.service';
 import * as fromApp from 'src/app/app.reducer'
 import { Store } from '@ngrx/store';
 import * as AuthActions from 'src/app/component/auth/store/auth.actions'
@@ -12,7 +11,7 @@ import { map } from 'rxjs';
 })
 export class HeaderComponent implements OnInit {
   isAuthenticated: boolean = false ;
-  constructor(private authService: AuthService,private store: Store<fromApp.AppState>) { }
+  constructor(private store: Store<fromApp.AppState>) { }
 
   ngOnInit(): void {
     this.store.select('auth').pipe(map(authState =>{
@@ -23,7 +22,7 @@ export class HeaderComponent implements OnInit {
   }
 
   onLogout(){
-    this.authService.logout() ;
+    this.store.dispatch(new AuthActions.logout()) ;
   }
 
 }
