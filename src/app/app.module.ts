@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './component/header/header.component';
@@ -13,8 +14,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { LoadingSpinnerComponent } from './component/loading-spinner/loading-spinner.component';
 import { AppRoutingModule } from './app-routing.module';
-import { productReducer } from './component/products/store/product.reducer';
 import * as fromApp from '../app/app.reducer'
+import { AuthEffects } from './component/auth/store/auth.effects';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import * as fromApp from '../app/app.reducer'
     HttpClientModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    StoreModule.forRoot(fromApp.appReducer)
+    StoreModule.forRoot(fromApp.appReducer),
+    EffectsModule.forRoot([AuthEffects])
   ],
   providers: [],
   bootstrap: [AppComponent]
